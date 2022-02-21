@@ -57,7 +57,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Check if object is contains in MyArrayList
-     *
+     * If o is null method return index null element
      * @param o is element that probably be in MyArrayList
      * @return true if element finds and false if element don't find
      */
@@ -79,7 +79,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Returns an array containing all of the elements in this MyArrayList in proper sequence
-     *
+     * If elements is null return array containing null
      * @return array containing the elements of this list
      */
     public Object[] toArray() {
@@ -87,6 +87,8 @@ public class MyArrayList<E> implements List<E> {
     }
 
     /**
+     * Returns an array containing all of the elements in this MyArrayList in proper sequence
+     * If elements is null return array containing null
      * @param a   is array into which the elements of this MyArrayList ro be sorted.
      * @param <T> is class in array
      * @return array containing the elements of this list
@@ -112,7 +114,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * This  method is adds an element to MyArraylist
-     *
+     * If t is null MyArrayList put null
      * @param t is element
      * @return true if adding element was successful
      */
@@ -126,7 +128,8 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Remove element from MyArrayList
-     *
+     * If index < 0 return false
+     * If o is null remove nothing
      * @param o is object that will be deleted
      * @return true if remove element was successful
      */
@@ -140,7 +143,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Check that all elements of the collection are contained in myArrayList
-     *
+     * c isn't be null
      * @param c contain elements to check
      * @return true if all elements contains in myArrayList
      */
@@ -157,7 +160,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Add all elements in MyArrayList from collections
-     *
+     * c isn't be null
      * @param c is collections contains elements for checking the addition
      * @return true if adding was successful
      */
@@ -181,15 +184,15 @@ public class MyArrayList<E> implements List<E> {
     }
 
     /**
-     * dds elements from a specific index in MyArrayList. Elements from the collection
-     *
+     * adds elements from a specific index in MyArrayList. Elements from the collection
+     * c isn't be null
      * @param index from which is added in myArrayList
      * @param c     is collections contains elements for checking the addition
      * @return true if adding was successful
      */
     public boolean addAll(int index, Collection<? extends E> c) {
         if (index > size || index < 0)
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new RuntimeException("Index: " + index + ", Size: " + size);
         Object[] a = c.toArray();
         int aSize = a.length;
         if (aSize == 0)
@@ -218,7 +221,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Remove all elements of Collections from MyArrayList
-     *
+     * c isn't be null
      * @param c is collections with elements
      * @return true if removing was successful
      */
@@ -235,11 +238,11 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Retain elements from MyArrayList that are contained in the collections
-     *
+     * c isn't be null
      * @param c is collections with elements
      * @return true if retaining was successful
      */
-    public boolean retainAll(Collection<?> c) {
+    public boolean retainAll(Collection<?> c)  {
         Object[] oldElementData = (E[]) new Object[(elementData.length)];
         for (int i = 0; i < size; i++) {
             oldElementData[i] = elementData[i];
@@ -279,7 +282,7 @@ public class MyArrayList<E> implements List<E> {
      */
     public E get(int index) {
         if (index > size || index < 0)
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new RuntimeException("Index: " + index + ", Size: " + size);
         return (E) elementData[index];
     }
 
@@ -292,7 +295,7 @@ public class MyArrayList<E> implements List<E> {
      */
     public E set(int index, E element) {
         if (index > size || index < 0)
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new RuntimeException("Index: " + index + ", Size: " + size);
         E oldElement = (E) elementData[index];
         elementData[index] = element;
         return oldElement;
@@ -300,13 +303,13 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Add element in MyArrayList by index
-     *
+     * if t is null method put null
      * @param index is position in MyArrayList where will be new element
      * @param t     is element
      */
     public void add(int index, E t) {
         if (index > size || index < 0)
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new RuntimeException("Index: " + index + ", Size: " + size);
 
         if (size + 1 > elementData.length) {
             ensureCapacity();
@@ -354,7 +357,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Find index in MyArrayLIst by element
-     *
+     * If o is null return index null
      * @param o is element to search for
      * @return index of element
      */
@@ -375,7 +378,7 @@ public class MyArrayList<E> implements List<E> {
 
     /**
      * Finds the last occurrence of an element in MyArrayList
-     *
+     * If o is null return last index null
      * @param o is element to search for
      * @return last index of element
      */
@@ -420,6 +423,8 @@ public class MyArrayList<E> implements List<E> {
         }
         return b.append(']').toString();
     }
+
+
 
     //не сделан
     @Override
