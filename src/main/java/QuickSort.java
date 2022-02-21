@@ -1,6 +1,5 @@
-package Home1;
+package main.java;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 class ComparatorInteger implements Comparator<Integer> {

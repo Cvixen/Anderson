@@ -1,4 +1,4 @@
-package Home1;
+package main.java;
 
 import java.util.*;
 
@@ -11,10 +11,13 @@ public class MyArrayList<E> implements List<E> {
     private final static int DEFAULT_ARRAY_SIZE = 10;
     private Object[] elementData;
     private int size;
+    private int defeniteSize;
+    private int flag;
 
 
     public MyArrayList() {
-        this.elementData = (E[]) new Object[DEFAULT_ARRAY_SIZE];
+        this.elementData = (E[]) new Object[0];
+        flag = 0;
     }
 
     /**
@@ -23,7 +26,9 @@ public class MyArrayList<E> implements List<E> {
      * @param defeniteSize is size array inside MyArrayList
      */
     public MyArrayList(int defeniteSize) {
-        this.elementData = (E[]) new Object[defeniteSize];
+        this.elementData = (E[]) new Object[0];
+        this.defeniteSize = defeniteSize;
+        flag = 1;
     }
 
     /**
@@ -119,7 +124,14 @@ public class MyArrayList<E> implements List<E> {
      * @return true if adding element was successful
      */
     public boolean add(E t) {
-        if (size + 1 > elementData.length) {
+        if(elementData.length == 0 && flag == 0){
+            elementData = (E[]) new Object[DEFAULT_ARRAY_SIZE];
+        }
+        else if(elementData.length == 0 && flag == 1){
+            elementData = (E[]) new Object[defeniteSize];
+        }
+
+        else if (size + 1 > elementData.length) {
             ensureCapacity();
         }
         elementData[size++] = t;
