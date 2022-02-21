@@ -8,7 +8,8 @@ import java.util.*;
  * @param <E> is some class
  */
 public class MyArrayList<E> implements List<E> {
-    private final static int DEFAULT_ARRAY_SIZE = 10;
+    private static final Object[] DEFAULT_ELEMENT = {};
+    private final int DEFAULT_ARRAY_SIZE = 10;
     private Object[] elementData;
     private int size;
     private int defeniteSize;
@@ -16,7 +17,7 @@ public class MyArrayList<E> implements List<E> {
 
 
     public MyArrayList() {
-        this.elementData = (E[]) new Object[0];
+        this.elementData = DEFAULT_ELEMENT;
         flag = 0;
     }
 
@@ -26,7 +27,7 @@ public class MyArrayList<E> implements List<E> {
      * @param defeniteSize is size array inside MyArrayList
      */
     public MyArrayList(int defeniteSize) {
-        this.elementData = (E[]) new Object[0];
+        this.elementData = DEFAULT_ELEMENT;
         this.defeniteSize = defeniteSize;
         flag = 1;
     }
